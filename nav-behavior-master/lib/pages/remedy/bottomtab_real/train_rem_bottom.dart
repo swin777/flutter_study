@@ -23,7 +23,7 @@ class _TrainRemBottomState extends State<TrainRemBottom>
     print('TRAIN - initState called');
 
     Future.delayed(Duration.zero).then((_) async {
-      todoProvider = Provider.of<JsonPlaceholder>(context);
+      todoProvider = Provider.of<JsonPlaceholder>(context, listen: false);
       await todoProvider.getTodos();
 
       todos = todoProvider.todos;
@@ -35,7 +35,7 @@ class _TrainRemBottomState extends State<TrainRemBottom>
   @override
   void didChangeDependencies() async {
     super.didChangeDependencies();
-    routeObserver.subscribe(this, ModalRoute.of(context));
+    routeObserver.subscribe(this, ModalRoute.of(context)!);
     print('TRAIN - didChangeDependencies called');
   }
 
@@ -92,8 +92,8 @@ class _TrainRemBottomState extends State<TrainRemBottom>
                   itemBuilder: (context, index) {
                     return Card(
                       child: ListTile(
-                        title: Text(todos[index].title),
-                        subtitle: todos[index].completed
+                        title: Text(todos[index].title.toString()),
+                        subtitle: todos[index].completed!
                             ? Text(
                                 'Completed',
                                 style: TextStyle(

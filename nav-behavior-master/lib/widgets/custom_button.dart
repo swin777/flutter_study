@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  final String title;
-  final VoidCallback onPressed;
+  final String? title;
+  final VoidCallback? onPressed;
 
   CustomButton({this.title, this.onPressed});
 
@@ -13,7 +13,7 @@ class CustomButton extends StatelessWidget {
       minWidth: 200,
       height: 50,
       child: Text(
-        title,
+        title!,
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Colors.white,

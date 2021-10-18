@@ -20,7 +20,7 @@ class _CarBehTopState extends State<CarBehTop> {
   }
 
   @override
-  void didUpdateWidget(Widget oldWidget) {
+  void didUpdateWidget(CarBehTop oldWidget) {
     super.didUpdateWidget(oldWidget);
     print('CAR - didUpdateWidet called');
   }

@@ -22,7 +22,7 @@ class _StackRemFirstState extends State<StackRemFirst> with RouteAware {
 
     setState(() => loading = true);
     Future.delayed(Duration.zero).then((_) async {
-      postProvider = Provider.of<JsonPlaceholder>(context);
+      postProvider = Provider.of<JsonPlaceholder>(context, listen: false);
       await postProvider.getPosts();
 
       posts = postProvider.posts;
@@ -34,7 +34,7 @@ class _StackRemFirstState extends State<StackRemFirst> with RouteAware {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    routeObserver.subscribe(this, ModalRoute.of(context));
+    routeObserver.subscribe(this, ModalRoute.of(context)!);
     print('STACK FIRST => didChangeDependencies called');
   }
 
@@ -100,8 +100,8 @@ class _StackRemFirstState extends State<StackRemFirst> with RouteAware {
                   itemBuilder: (context, index) {
                     return Card(
                       child: ListTile(
-                        title: Text(posts[index].title),
-                        subtitle: Text(posts[index].body),
+                        title: Text(posts[index].title.toString()),
+                        subtitle: Text(posts[index].body.toString()),
                       ),
                     );
                   },

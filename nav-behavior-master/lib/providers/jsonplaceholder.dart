@@ -3,10 +3,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Post {
-  final int userId;
-  final int id;
-  final String title;
-  final String body;
+  final int? userId;
+  final int? id;
+  final String? title;
+  final String? body;
 
   Post({
     this.userId,
@@ -32,11 +32,11 @@ class Post {
 }
 
 class Comment {
-  final int postId;
-  final int id;
-  final String name;
-  final String email;
-  final String body;
+  final int? postId;
+  final int? id;
+  final String? name;
+  final String? email;
+  final String? body;
 
   Comment({
     this.postId,
@@ -65,10 +65,10 @@ class Comment {
 }
 
 class Todo {
-  final int userId;
-  final int id;
-  final String title;
-  final bool completed;
+  final int? userId;
+  final int? id;
+  final String? title;
+  final bool? completed;
 
   Todo({
     this.userId,
@@ -105,7 +105,7 @@ class JsonPlaceholder with ChangeNotifier {
   Future<void> getPosts() async {
     try {
       final response =
-          await http.get('https://jsonplaceholder.typicode.com/posts');
+          await http.get(Uri.https('jsonplaceholder.typicode.com', '/posts', null));
       final postData = json.decode(response.body);
 
       postData.forEach((post) {
@@ -120,8 +120,9 @@ class JsonPlaceholder with ChangeNotifier {
 
   Future<void> getComments() async {
     try {
+      
       final response =
-          await http.get('https://jsonplaceholder.typicode.com/comments');
+          await http.get(Uri.https('jsonplaceholder.typicode.com', '/comments', null));
       final commentData = json.decode(response.body);
 
       commentData.forEach((comment) {
@@ -137,7 +138,7 @@ class JsonPlaceholder with ChangeNotifier {
   Future<void> getTodos() async {
     try {
       final response =
-          await http.get('https://jsonplaceholder.typicode.com/todos');
+          await http.get(Uri.https('jsonplaceholder.typicode.com', '/todos', null));
       final todoData = json.decode(response.body);
 
       todoData.forEach((todo) {

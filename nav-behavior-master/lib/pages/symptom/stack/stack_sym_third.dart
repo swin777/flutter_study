@@ -18,7 +18,7 @@ class _StackSymThirdState extends State<StackSymThird> {
     super.initState();
     setState(() => loading = true);
     Future.delayed(Duration.zero).then((_) async {
-      commentProvider = Provider.of<JsonPlaceholder>(context);
+      commentProvider = Provider.of<JsonPlaceholder>(context, listen: false);
       await commentProvider.getComments();
 
       comments = commentProvider.comments;
@@ -61,9 +61,9 @@ class _StackSymThirdState extends State<StackSymThird> {
                   itemBuilder: (context, index) {
                     return Card(
                       child: ListTile(
-                        title: Text(comments[index].name),
-                        subtitle: Text(comments[index].body),
-                        trailing: Text(comments[index].email),
+                        title: Text(comments[index].name.toString()),
+                        subtitle: Text(comments[index].body.toString()),
+                        trailing: Text(comments[index].email.toString()),
                       ),
                     );
                   },

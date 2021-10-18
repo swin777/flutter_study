@@ -29,7 +29,7 @@ class _StackSymSecondState extends State<StackSymSecond> {
     if (isFirst) {
       setState(() => loading = true);
 
-      todoProvider = Provider.of<JsonPlaceholder>(context);
+      todoProvider = Provider.of<JsonPlaceholder>(context, listen: false);
       await todoProvider.getTodos();
 
       setState(() {
@@ -82,8 +82,8 @@ class _StackSymSecondState extends State<StackSymSecond> {
                   itemBuilder: (context, index) {
                     return Card(
                       child: ListTile(
-                        title: Text(todos[index].title),
-                        subtitle: todos[index].completed
+                        title: Text(todos[index].title.toString()),
+                        subtitle: todos[index].completed!
                             ? Text(
                                 'Completed',
                                 style: TextStyle(

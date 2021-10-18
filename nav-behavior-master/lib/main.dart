@@ -10,7 +10,7 @@ import 'providers/jsonplaceholder.dart';
 void main() => runApp(MyApp());
 
 // global RouteObserver
-final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+final RouteObserver<ModalRoute<void>> routeObserver = RouteObserver<ModalRoute<void>>();
 
 class MyApp extends StatelessWidget {
   @override

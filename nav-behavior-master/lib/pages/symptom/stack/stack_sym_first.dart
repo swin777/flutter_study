@@ -19,7 +19,7 @@ class _StackSymFirstState extends State<StackSymFirst> {
     super.initState();
     setState(() => loading = true);
     Future.delayed(Duration.zero).then((_) async {
-      postProvider = Provider.of<JsonPlaceholder>(context);
+      postProvider = Provider.of<JsonPlaceholder>(context, listen: false);
       await postProvider.getPosts();
 
       posts = postProvider.posts;
@@ -75,8 +75,8 @@ class _StackSymFirstState extends State<StackSymFirst> {
                   itemBuilder: (context, index) {
                     return Card(
                       child: ListTile(
-                        title: Text(posts[index].title),
-                        subtitle: Text(posts[index].body),
+                        title: Text(posts[index].title.toString()),
+                        subtitle: Text(posts[index].body.toString()),
                       ),
                     );
                   },

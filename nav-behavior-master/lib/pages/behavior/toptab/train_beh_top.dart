@@ -20,7 +20,7 @@ class _TrainBehTopState extends State<TrainBehTop> {
   }
 
   @override
-  void didUpdateWidget(Widget oldWidget) {
+  void didUpdateWidget(TrainBehTop oldWidget) {
     super.didUpdateWidget(oldWidget);
     print('TRAIN - didUpdateWidet called');
   }

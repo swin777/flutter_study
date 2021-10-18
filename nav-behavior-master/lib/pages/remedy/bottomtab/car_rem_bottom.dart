@@ -21,7 +21,7 @@ class _CarRemBottomState extends State<CarRemBottom> with RouteAware {
     print('CAR - initState called');
     setState(() => loading = true);
     Future.delayed(Duration.zero).then((_) async {
-      commentProvider = Provider.of<JsonPlaceholder>(context);
+      commentProvider = Provider.of<JsonPlaceholder>(context, listen: false);
       await commentProvider.getComments();
 
       comments = commentProvider.comments;
@@ -33,7 +33,7 @@ class _CarRemBottomState extends State<CarRemBottom> with RouteAware {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    routeObserver.subscribe(this, ModalRoute.of(context));
+    routeObserver.subscribe(this, ModalRoute.of(context)!);
     print('CAR - didChangeDependencies called');
   }
 
@@ -86,9 +86,9 @@ class _CarRemBottomState extends State<CarRemBottom> with RouteAware {
                   itemBuilder: (context, index) {
                     return Card(
                       child: ListTile(
-                        title: Text(comments[index].name),
-                        subtitle: Text(comments[index].body),
-                        trailing: Text(comments[index].email),
+                        title: Text(comments[index].name.toString()),
+                        subtitle: Text(comments[index].body.toString()),
+                        trailing: Text(comments[index].email.toString()),
                       ),
                     );
                   },
